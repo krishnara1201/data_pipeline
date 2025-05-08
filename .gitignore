@@ -1,6 +1,15 @@
 # Ignore virtual environment
 pipeline_project_env/
+linux_venv/
 
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints
 
+# Ignore env files
+.env
+scripts/.env
+airflow/.env
+
+
+airflow/logs
+airflow/plugins
