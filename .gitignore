@@ -1,15 +1,100 @@
-# Ignore virtual environment
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
 pipeline_project_env/
 linux_venv/
+pipeline_project_venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Ignore Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# Ignore env files
+# Environment variables and secrets
 .env
+.env.local
+.env.development
+.env.test
+.env.production
 scripts/.env
 airflow/.env
+*.env
 
+# API Keys and credentials
+credentials.json
+service_account.json
+reddit_credentials.json
+twitter_credentials.json
+secrets.json
+config.json
 
-airflow/logs
-airflow/plugins
+# Airflow
+airflow/logs/
+airflow/plugins/
+airflow/dags/__pycache__/
+airflow/dags/*.pyc
+
+# dbt
+dbt_project/sentiment_analysis/target/
+dbt_project/sentiment_analysis/logs/
+dbt_project/sentiment_analysis/dbt_packages/
+dbt_project/sentiment_analysis/profiles.yml
+
+# Data files (optional - remove if you want to track data)
+data/raw/
+data/processed/
+*.csv
+*.json
+*.parquet
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+.dockerignore
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
