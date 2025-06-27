@@ -41,17 +41,39 @@ REDDIT_USERNAME=your_reddit_username
 REDDIT_PASSWORD=your_reddit_password
 ```
 
-### 3. Start the Pipeline
+### 3. Set Up Airflow Configuration
+
+Copy the example Airflow configuration and generate secure keys:
+```bash
+cp airflow/config/airflow.cfg.example airflow/config/airflow.cfg
+```
+
+Generate secure keys for Airflow:
+```bash
+# Generate Fernet key for encryption
+python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+
+# Generate secret keys for API authentication
+python -c "import secrets; print(secrets.token_urlsafe(16))"
+```
+
+Edit `airflow/config/airflow.cfg` and replace the placeholder values:
+- `YOUR_FERNET_KEY_HERE` with the generated Fernet key
+- `YOUR_INTERNAL_API_SECRET_KEY_HERE` with a generated secret key
+- `YOUR_SECRET_KEY_HERE` with a generated secret key
+- `YOUR_JWT_SECRET_HERE` with a generated secret key
+
+### 4. Start the Pipeline
 ```bash
 docker-compose up -d
 ```
 
-### 4. Access Airflow Web UI
+### 5. Access Airflow Web UI
 - URL: http://localhost:8080
 - Username: airflow
 - Password: airflow
 
-### 5. Trigger the DAG
+### 6. Trigger the DAG
 - Go to the Airflow web UI
 - Find the `twitter_sentiment_analysis` DAG
 - Click "Trigger DAG" to run the pipeline
@@ -79,6 +101,7 @@ data_pipeline_Project/
 ### Protected Files
 The following files are automatically ignored by Git to protect sensitive information:
 - `.env` - Contains your actual API credentials
+- `airflow/config/airflow.cfg` - Contains Airflow encryption keys and secrets
 - `data/` - Contains raw and processed data
 - `airflow/logs/` - Airflow log files
 - `dbt_project/sentiment_analysis/profiles.yml` - Database connection details
